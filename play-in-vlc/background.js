@@ -37,7 +37,7 @@ var collect = async tab => {
   return urls;
 };
 
-//  send to VLC on user-action
+//  send to on user-action
 browserAction.on('clicked', async tab => {
   try {
     const urls = await collect(tab);
@@ -51,6 +51,7 @@ browserAction.on('clicked', async tab => {
 });
 
 runtime.on('start-up', () => {
+  const {name} = webext.runtime.getManifest();
   // copy to clipboard
   contextMenus.create({
     title: 'Copy detected links to the clipboard',
@@ -60,9 +61,9 @@ runtime.on('start-up', () => {
   });
   // play links
   contextMenus.create({
-    title: 'Play in VLC',
+    title: name,
     contexts: ['video', 'audio'],
-    id: 'play-in-vlc',
+    id: 'play-in',
     documentUrlPatterns: ['*://*/*'],
     targetUrlPatterns: [localStorage.getItem('targetUrlPatterns') || '*://*/*']
   });
@@ -78,6 +79,6 @@ contextMenus.on('clicked', async(info, tab) => {
     });
   }
 }).if(({menuItemId}) => menuItemId === 'copy-to-clipboard');
-// send to vlc from context-menu
+// send to from context-menu
 contextMenus.on('clicked', ({srcUrl}) => send([srcUrl]))
-  .if(({menuItemId}) => menuItemId === 'play-in-vlc');
+  .if(({menuItemId}) => menuItemId === 'play-in');

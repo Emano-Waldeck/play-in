@@ -1,7 +1,7 @@
 /* globals webext, Parser, command */
 'use strict';
 
-var native = new webext.runtime.Native('com.eccorem.node');
+var native = new webext.runtime.Native('emano.waldeck');
 
 var send = async urls => {
   const prefs = await webext.storage.get({

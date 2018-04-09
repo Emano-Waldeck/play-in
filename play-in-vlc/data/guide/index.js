@@ -38,11 +38,11 @@ var notify = (function () {
 })();
 
 document.addEventListener('click', e => {
-  let target = e.target;
+  const target = e.target;
   if (target.dataset.cmd === 'download') {
     notify.show('info', 'Looking for the latest version of the native-client', 60000);
-    let req = new window.XMLHttpRequest();
-    req.open('GET', 'https://github.com/Emano-Waldeck/native-client/releases/latest');
+    const req = new window.XMLHttpRequest();
+    req.open('GET', 'https://api.github.com/repos/Emano-Waldeck/native-client/releases/latest');
     req.responseType = 'json';
     req.onload = () => {
       try {
@@ -68,7 +68,7 @@ document.addEventListener('click', e => {
     req.send();
   }
   else if (target.dataset.cmd === 'check') {
-    chrome.runtime.sendNativeMessage('com.eccorem.node', {
+    chrome.runtime.sendNativeMessage('emano.waldeck', {
       method: 'spec'
     }, response => {
       console.error(response);

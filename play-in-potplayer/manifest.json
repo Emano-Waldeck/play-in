@@ -1,16 +1,21 @@
 {
   "manifest_version": 2,
-  "version": "0.1.2",
-  "name": "Play in VLC™",
-  "description": "Detect streamable video and audio sources and offer to play them in VLC multimedia player",
+  "version": "0.1.0",
+  "name": "Play in PotPlayer",
+  "description": "Detect streamable video and audio sources and offer to play them in PotPlayer multimedia player",
 
   "icons": {
     "16": "data/icons/16.png",
+    "18": "data/icons/18.png",
+    "19": "data/icons/19.png",
     "32": "data/icons/32.png",
+    "36": "data/icons/36.png",
+    "38": "data/icons/38.png",
     "48": "data/icons/48.png",
     "64": "data/icons/64.png",
     "128": "data/icons/128.png",
-    "256": "data/icons/256.png"
+    "256": "data/icons/256.png",
+    "512": "data/icons/512.png"
   },
 
   "homepage_url": "http://add0n.com/play-in.html",
@@ -53,21 +58,17 @@
   "browser_action": {
     "default_icon": {
       "16": "data/icons/16.png",
+      "18": "data/icons/18.png",
+      "19": "data/icons/19.png",
       "32": "data/icons/32.png",
+      "36": "data/icons/36.png",
+      "38": "data/icons/38.png",
       "48": "data/icons/48.png",
-      "64": "data/icons/64.png",
-      "128": "data/icons/128.png",
-      "256": "data/icons/256.png"
+      "64": "data/icons/64.png"
     }
   },
   "content_scripts": [{
     "matches": ["*://*/*"],
     "js": ["data/inject.js"]
-  }],
-  "applications": {
-    "gecko": {
-      "id": "{ff83c451-2c38-4ae9-baf0-7181faad4ee8}",
-      "strict_min_version": "59.0"
-    }
-  }
+  }]
 }
